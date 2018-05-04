@@ -1,2 +1,6 @@
-Webservice-Pokemon*
 .build/
+blib/
+
+*.swp
+pm_to_lib
+Webservice-Pokemon*
