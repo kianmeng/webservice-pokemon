@@ -8,7 +8,7 @@ use Mouse;
 
 with 'Web::API';
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 has 'commands' => (

@@ -1,6 +1,10 @@
-Revision history for Webservice-Pokemon
+Revision history for WebService-Pokemon
 
 {{$NEXT}}
 
+0.02  2018-05-06 00:42:34 +08
+    - Switch module name according to standard naming convention
+    - Integration with Travis CI and other external badges
+
 0.01  2018-05-05 13:21:19 +08
-        - Initial release
+    - Initial release
