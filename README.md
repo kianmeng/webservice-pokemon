@@ -5,7 +5,7 @@ from http://pokeapi.co.
 
 # SYNOPSIS
 
-    use Webservice::Pokemon;
+    use WebService::Pokemon;
 
 # DESCRIPTION
 
