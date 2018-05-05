@@ -12,7 +12,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
    },
-   "name" : "webservice-pokemon",
+   "name" : "Webservice-Pokemon",
    "no_index" : {
       "directory" : [
          "eg",
@@ -43,6 +43,7 @@
       },
       "runtime" : {
          "requires" : {
+            "Web::API" : "0",
             "perl" : "5.008005"
          }
       },
