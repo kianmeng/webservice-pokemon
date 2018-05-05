@@ -11,6 +11,14 @@ from http://pokeapi.co.
 
 Webservice::Pokemon is a Perl client helper library for the Pokemon API (pokeapi.co).
 
+# DEVELOPMENT
+
+    $ cpanm Dist::Milla
+    $ milla listdeps --missing | cpanm
+    $ milla test
+    $ milla build
+    $ milla release
+
 # COPYRIGHT AND LICENSE
 
 This software is Copyright (c) 2018 by Kian Meng, Ang.
