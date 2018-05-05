@@ -10,6 +10,12 @@ with 'Web::API';
 
 our $VERSION = '0.01';
 
+sub commands {
+    my ($self) = @_;
+    return $self->commands;
+}
+
+
 1;
 __END__
 
