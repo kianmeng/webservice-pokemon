@@ -1,6 +1,7 @@
-.build/
-blib/
-
-*.swp
-pm_to_lib
-Webservice-Pokemon*
+/Webservice-Pokemon-*
+/.build
+/_build*
+/Build
+MYMETA.*
+!META.json
+/.prove
