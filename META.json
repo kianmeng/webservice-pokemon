@@ -49,6 +49,7 @@
       },
       "test" : {
          "requires" : {
+            "Dist::Zilla::App::Command::cover" : "0",
             "Test::More" : "0.96"
          }
       }
