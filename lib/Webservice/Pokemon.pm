@@ -1,9 +1,11 @@
-package Webservice::Pokemon;
-# ABSTRACT: A module to access the Pokémon data through RESTful API from http://pokeapi.co
-
+use 5.008001;
 use strict;
 use warnings;
-use utf8
+use utf8;
+
+package Webservice::Pokemon;
+# ABSTRACT: A module to access the Pokémon data through RESTful API from http://pokeapi.co
+# PODNAME: README
 
 
 1;
