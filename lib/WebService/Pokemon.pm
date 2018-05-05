@@ -1,4 +1,4 @@
-package Webservice::Pokemon;
+package WebService::Pokemon;
 
 use 5.008_005;
 use strict;
@@ -51,7 +51,7 @@ from http://pokeapi.co.
 
 =head1 SYNOPSIS
 
-  use Webservice::Pokemon;
+  use WebService::Pokemon;
 
 =head1 DESCRIPTION
 
