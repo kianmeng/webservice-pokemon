@@ -1,3 +1,10 @@
+[![Build Status](https://travis-ci.org/kianmeng/webservice-pokemon.svg?branch=master)](https://travis-ci.org/kianmeng/webservice-pokemon)
+[![codecov](https://codecov.io/gh/kianmeng/webservice-pokemon/branch/master/graph/badge.svg)](https://codecov.io/gh/kianmeng/webservice-pokemon)
+[![Coverage Status](https://coveralls.io/repos/kianmeng/webservice-pokemon/badge.svg?branch=master)](https://coveralls.io/r/kianmeng/webservice-pokemon?branch=master)
+[![Kwalitee status](http://cpants.cpanauthors.org/dist/Webservice-Pokemon.png)](http://cpants.charsbar.org/dist/overview/Webservice-Pokemon)
+[![Cpan license](https://img.shields.io/cpan/l/Webservice-Pokemon.svg)](https://metacpan.org/release/Webservice-Pokemon)
+[![Cpan version](https://img.shields.io/cpan/v/Webservice-Pokemon.svg)](https://metacpan.org/release/Webservice-Pokemon)
+
 # NAME
 
 Webservice::Pokemon - A module to access the Pokémon data through RESTful API
