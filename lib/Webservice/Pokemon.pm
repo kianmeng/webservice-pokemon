@@ -24,7 +24,7 @@ Webservice::Pokemon is a Perl client helper library for the Pokemon API (pokeapi
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2017 by Kian Meng, Ang.
+This software is Copyright (c) 2018 by Kian Meng, Ang.
 
 This is free software, licensed under:
 
