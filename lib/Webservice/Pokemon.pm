@@ -1,7 +1,13 @@
 package Webservice::Pokemon;
 
-use strict;
 use 5.008_005;
+use strict;
+use warnings;
+
+use Moo;
+
+with 'Web::API';
+
 our $VERSION = '0.01';
 
 1;
