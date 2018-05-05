@@ -4,15 +4,38 @@ use 5.008_005;
 use strict;
 use warnings;
 
-use Moo;
+use Mouse;
 
 with 'Web::API';
 
 our $VERSION = '0.01';
 
+
+has 'commands' => (
+    is      => 'rw',
+    default => sub {
+        {
+            pokemon => { method => 'GET', require_id => 1, path => 'pokemon/:id/' },
+        };
+    },
+);
+
+
 sub commands {
     my ($self) = @_;
+
     return $self->commands;
+}
+
+sub BUILD {
+    my ($self) = @_;
+
+    $self->user_agent(__PACKAGE__ . ' ' . $VERSION);
+    $self->base_url('http://pokeapi.co/api/v2');
+    $self->content_type('application/json');
+    # $self->debug(1);
+
+    return $self;
 }
 
 
