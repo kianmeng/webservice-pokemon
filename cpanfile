@@ -1,4 +1,3 @@
-requires 'perl', '5.008001';
 requires 'strict';
 requires 'utf8';
 requires 'warnings';
