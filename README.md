@@ -41,6 +41,14 @@ Release the module.
     $ milla build
     $ milla release
 
+# METHODS
+
+## api\_version
+
+Get the current API version of the web service.
+
+    my $version = $pokemon->api_version();
+
 # COPYRIGHT AND LICENSE
 
 This software is Copyright (c) 2018 by Kian Meng, Ang.

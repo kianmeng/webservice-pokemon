@@ -5,11 +5,18 @@ use strict;
 use warnings;
 
 use Mouse;
+use Types::Standard qw/Num/;
 
 with 'Web::API';
 
 our $VERSION = '0.03';
 
+
+has 'api_version' => (
+    is      => 'ro',
+    isa     => Num,
+    default => sub { '2.0' }
+);
 
 has 'commands' => (
     is      => 'rw',
@@ -19,7 +26,6 @@ has 'commands' => (
         };
     },
 );
-
 
 sub commands {
     my ($self) = @_;
@@ -79,6 +85,14 @@ Release the module.
 
     $ milla build
     $ milla release
+
+=head1 METHODS
+
+=head2 api_version
+
+Get the current API version of the web service.
+
+    my $version = $pokemon->api_version();
 
 =head1 COPYRIGHT AND LICENSE
 
