@@ -5,19 +5,19 @@ use strict;
 use warnings;
 
 use Mouse;
-use Types::Standard qw/Num/;
+use Types::Standard qw/Str/;
 
 with 'Web::API';
 
-use constant POKEAPI_DEFAULT_API_URL => 'http://pokeapi.co/api/v2';
+use constant POKEAPI_DEFAULT_BASE_API_URL => 'http://pokeapi.co/api/';
 
 our $VERSION = '0.03';
 
 
 has 'api_version' => (
     is      => 'ro',
-    isa     => Num,
-    default => sub { '2.0' }
+    isa     => Str,
+    default => sub { 'v2' }
 );
 
 has 'commands' => (
@@ -38,7 +38,8 @@ sub commands {
 sub BUILD {
     my ($self, $args) = @_;
 
-    my $base_url = $args->{base_url} || POKEAPI_DEFAULT_API_URL;
+    my $base_url = $args->{base_url} || POKEAPI_DEFAULT_BASE_API_URL;
+    $base_url .= $self->api_version;
 
     $self->user_agent(__PACKAGE__ . ' ' . $VERSION);
     $self->base_url($base_url);
