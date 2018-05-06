@@ -49,20 +49,26 @@ Release the module.
 Construct a new WebService::Pokemon instance. Optionally takes a hash or hash reference.
 
     # Instantiate the class.
-    my $swapi = WebService::Swapi->new;
+    my $pokemon_api = WebService::Pokemon->new;
 
 ### base\_url
 
 The URL of the API resource.
 
     # Instantiate the class by setting the URL of the API endpoints.
-    my $swapi = WebService::Swapi->new({api_url => 'http://example.com/api/v2'});
+    my $pokemon_api = WebService::Pokemon->new({api_url => 'http://example.com/api/v2'});
 
 ## api\_version
 
 Get the current API version of the web service.
 
-    my $version = $pokemon->api_version();
+    my $version = $pokemon_api->api_version();
+
+## pokemon
+
+Get the details of a particular Pokémon.
+
+    my $pokemon = $pokemon_api->pokemon(id => 1);
 
 # COPYRIGHT AND LICENSE
 
