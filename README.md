@@ -43,6 +43,20 @@ Release the module.
 
 # METHODS
 
+## new(\[%$args\])
+
+Construct a new WebService::Pokemon instance. Optionally takes a hash or hash reference.
+
+    # Instantiate the class.
+    my $swapi = WebService::Swapi->new;
+
+### base\_url
+
+The URL of the API resource.
+
+    # Instantiate the class by setting the URL of the API endpoints.
+    my $swapi = WebService::Swapi->new({api_url => 'http://example.com/api/v2'});
+
 ## api\_version
 
 Get the current API version of the web service.

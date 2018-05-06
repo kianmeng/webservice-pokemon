@@ -24,6 +24,11 @@
       ]
    },
    "prereqs" : {
+      "build" : {
+         "requires" : {
+            "Module::Build" : "0.28"
+         }
+      },
       "configure" : {
          "requires" : {
             "Module::Build::Tiny" : "0.034"
@@ -44,14 +49,21 @@
       "runtime" : {
          "requires" : {
             "Mouse" : "0",
+            "Types::Standard" : "0",
             "Web::API" : "0",
-            "perl" : "5.008005"
+            "strict" : "0",
+            "utf8" : "0",
+            "warnings" : "0"
          }
       },
       "test" : {
          "requires" : {
+            "Carp" : "0",
             "Dist::Zilla::App::Command::cover" : "0",
-            "Test::More" : "0.96"
+            "File::Find" : "0",
+            "File::Temp" : "0",
+            "Scalar::Util" : "0",
+            "Test::More" : "0.94"
          }
       }
    },
