@@ -35,6 +35,7 @@ Several ways to run the test.
     $ milla test --author --release
     $ AUTHOR_TESTING=1 RELEASE_TESTING=1 milla test
     $ AUTHOR_TESTING=1 RELEASE_TESTING=1 milla run prove t/01_instantiation.t
+    $ LOGGING=1 milla run prove t/t/03_pokemon.t
 
 Release the module.
 
