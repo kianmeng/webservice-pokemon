@@ -29,6 +29,14 @@ has 'commands' => (
     },
 );
 
+around 'format_response' => sub {
+    my ($method, $self, $response, $ct, $error) = @_;
+
+    my $answer = $self->$method($response, $ct, $error);
+
+    return $answer->{content} if ($answer->{code} == 200);
+};
+
 sub commands {
     my ($self) = @_;
 
@@ -100,20 +108,26 @@ Release the module.
 Construct a new WebService::Pokemon instance. Optionally takes a hash or hash reference.
 
     # Instantiate the class.
-    my $swapi = WebService::Swapi->new;
+    my $pokemon_api = WebService::Pokemon->new;
 
 =head3 base_url
 
 The URL of the API resource.
 
     # Instantiate the class by setting the URL of the API endpoints.
-    my $swapi = WebService::Swapi->new({api_url => 'http://example.com/api/v2'});
+    my $pokemon_api = WebService::Pokemon->new({api_url => 'http://example.com/api/v2'});
 
 =head2 api_version
 
 Get the current API version of the web service.
 
-    my $version = $pokemon->api_version();
+    my $version = $pokemon_api->api_version();
+
+=head2 pokemon
+
+Get the details of a particular Pokémon.
+
+    my $pokemon = $pokemon_api->pokemon(id => 1);
 
 =head1 COPYRIGHT AND LICENSE
 

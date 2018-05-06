@@ -11,7 +11,6 @@ my ($pokemon, $got);
 $pokemon = WebService::Pokemon->new;
 $got = $pokemon->pokemon(id => 1);
 
-my $content = $got->{content};
-cmp_ok(scalar keys %$content, '>', 0, 'expect fields found');
+is($got->{name}, 'bulbasaur', 'expect pokemon found');
 
 done_testing;
