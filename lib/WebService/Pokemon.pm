@@ -9,6 +9,8 @@ use Types::Standard qw/Num/;
 
 with 'Web::API';
 
+use constant POKEAPI_DEFAULT_API_URL => 'http://pokeapi.co/api/v2';
+
 our $VERSION = '0.03';
 
 
@@ -34,11 +36,14 @@ sub commands {
 }
 
 sub BUILD {
-    my ($self) = @_;
+    my ($self, $args) = @_;
+
+    my $base_url = $args->{base_url} || POKEAPI_DEFAULT_API_URL;
 
     $self->user_agent(__PACKAGE__ . ' ' . $VERSION);
-    $self->base_url('http://pokeapi.co/api/v2');
+    $self->base_url($base_url);
     $self->content_type('application/json');
+
     # $self->debug(1);
 
     return $self;
@@ -87,6 +92,20 @@ Release the module.
     $ milla release
 
 =head1 METHODS
+
+=head2 new([%$args])
+
+Construct a new WebService::Pokemon instance. Optionally takes a hash or hash reference.
+
+    # Instantiate the class.
+    my $swapi = WebService::Swapi->new;
+
+=head3 base_url
+
+The URL of the API resource.
+
+    # Instantiate the class by setting the URL of the API endpoints.
+    my $swapi = WebService::Swapi->new({api_url => 'http://example.com/api/v2'});
 
 =head2 api_version
 
