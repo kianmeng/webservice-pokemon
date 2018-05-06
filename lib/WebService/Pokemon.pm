@@ -34,7 +34,9 @@ around 'format_response' => sub {
 
     my $answer = $self->$method($response, $ct, $error);
 
-    return $answer->{content} if ($answer->{code} == 200);
+    return ($answer->{code} == 200)
+        ? $answer->{content}
+        : undef;
 };
 
 sub commands {
