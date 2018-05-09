@@ -1,11 +1,10 @@
 package WebService::Pokemon;
 
-use 5.008_005;
-use strict;
-use warnings;
-
 use Mouse;
 use Types::Standard qw/Str/;
+
+use strictures 2;
+use namespace::clean;
 
 with 'Web::API';
 
