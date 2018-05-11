@@ -23,7 +23,19 @@ has 'commands' => (
     is      => 'rw',
     default => sub {
         {
-            pokemon => { method => 'GET', require_id => 1, path => 'pokemon/:id/' },
+            pokemons => {
+                method => 'GET',
+                path => 'pokemon/',
+                default_attributes => {
+                    limit => 20,
+                    offset => 0
+                }
+            },
+            pokemon => {
+                method => 'GET',
+                require_id => 1,
+                path => 'pokemon/:id/'
+            },
         };
     },
 );
