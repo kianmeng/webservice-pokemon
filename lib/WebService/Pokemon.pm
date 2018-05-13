@@ -8,18 +8,19 @@ use namespace::clean;
 
 with 'Web::API';
 
-use constant POKEAPI_DEFAULT_BASE_API_URL => 'http://pokeapi.co/api/';
+use constant DEFAULT_BASE_API_URL => 'http://pokeapi.co/api/';
+use constant DEFAULT_API_VERSION => 'v2';
 
 our $VERSION = '0.03';
 
 
 has 'api_version' => (
-    is      => 'ro',
+    is      => 'rw',
     isa     => Str,
-    default => sub { 'v2' }
+    default => sub { DEFAULT_API_VERSION }
 );
 
-has 'commands' => (
+has 'v2_endpoints' => (
     is      => 'rw',
     default => sub {
         {
@@ -40,6 +41,14 @@ has 'commands' => (
     },
 );
 
+has 'v1_endpoints' => (
+    is      => 'rw',
+    default => sub {
+        {
+        };
+    },
+);
+
 around 'format_response' => sub {
     my ($method, $self, $response, $ct, $error) = @_;
 
@@ -53,13 +62,18 @@ around 'format_response' => sub {
 sub commands {
     my ($self) = @_;
 
-    return $self->commands;
+    my $api_version = $self->api_version;
+
+    return $self->v1_endpoints if ($api_version eq 'v1');
+    return $self->v2_endpoints if ($api_version eq 'v2');
 }
 
 sub BUILD {
     my ($self, $args) = @_;
 
-    my $base_url = $args->{base_url} || POKEAPI_DEFAULT_BASE_API_URL;
+    $self->api_version($args->{api_version}) if (defined $args->{api_version});
+
+    my $base_url = $args->{base_url} || DEFAULT_BASE_API_URL;
     $base_url .= $self->api_version;
 
     $self->user_agent(__PACKAGE__ . ' ' . $VERSION);
@@ -130,17 +144,30 @@ The URL of the API resource.
     # Instantiate the class by setting the URL of the API endpoints.
     my $pokemon_api = WebService::Pokemon->new({api_url => 'http://example.com/api/v2'});
 
+=head3 api_version
+
+The API version of the API endpoints. By default, the API version was set to
+'v2'.
+
+    # Instantiate the class by setting the API version.
+    my $pokemon_api = WebService::Pokemon->new({api_version => 'v1'});
+
 =head2 api_version
 
 Get the current API version of the web service.
 
     my $version = $pokemon_api->api_version();
 
+    # Change the API version.
+    $pokemon_api->api_version('v1');
+
 =head2 pokemon
 
 Get the details of a particular Pokémon.
 
     my $pokemon = $pokemon_api->pokemon(id => 1);
+
+=head2 commands
 
 =head1 COPYRIGHT AND LICENSE
 

@@ -58,17 +58,30 @@ The URL of the API resource.
     # Instantiate the class by setting the URL of the API endpoints.
     my $pokemon_api = WebService::Pokemon->new({api_url => 'http://example.com/api/v2'});
 
+### api\_version
+
+The API version of the API endpoints. By default, the API version was set to
+'v2'.
+
+    # Instantiate the class by setting the API version.
+    my $pokemon_api = WebService::Pokemon->new({api_version => 'v1'});
+
 ## api\_version
 
 Get the current API version of the web service.
 
     my $version = $pokemon_api->api_version();
 
+    # Change the API version.
+    $pokemon_api->api_version('v1');
+
 ## pokemon
 
 Get the details of a particular Pokémon.
 
     my $pokemon = $pokemon_api->pokemon(id => 1);
+
+## commands
 
 # COPYRIGHT AND LICENSE
 
