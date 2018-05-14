@@ -77,9 +77,31 @@ Get the current API version of the web service.
 
 ## pokemon
 
-Get the details of a particular Pokémon.
+Get the details of a particular Pokémon either by id or name.
 
     my $pokemon = $pokemon_api->pokemon(id => 1);
+    my $pokemon = $pokemon_api->pokemon(id => 'bulbasaur');
+
+## berry
+
+Get the details of a particular berry either by id or name.
+
+    my $pokemon = $pokemon_api->berry(id => 1);
+    my $pokemon = $pokemon_api->berry(id => 'cheri');
+
+## berry\_firmness
+
+Get the details of a particular berry firmness either by id or name.
+
+    my $pokemon = $pokemon_api->berry_firmness(id => 1);
+    my $pokemon = $pokemon_api->berry_firmness(id => 'very-soft');
+
+## berry\_flavor
+
+Get the details of a particular berry flavor either by id or name.
+
+    my $pokemon = $pokemon_api->berry_firmness(id => 1);
+    my $pokemon = $pokemon_api->berry_firmness(id => 'spicy');
 
 ## commands
 
