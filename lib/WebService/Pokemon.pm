@@ -27,15 +27,32 @@ has 'v2_endpoints' => (
             pokemons => {
                 method => 'GET',
                 path => 'pokemon/',
-                default_attributes => {
-                    limit => 20,
-                    offset => 0
-                }
+                default_attributes => { limit => 20, offset => 0 }
             },
             pokemon => {
                 method => 'GET',
                 require_id => 1,
                 path => 'pokemon/:id/'
+            },
+            berries => {
+                method => 'GET',
+                path => 'berry/',
+                default_attributes => { limit => 20, offset => 0 }
+            },
+            berry => {
+                method => 'GET',
+                require_id => 1,
+                path => 'berry/:id/'
+            },
+            berry_firmness => {
+                method => 'GET',
+                require_id => 1,
+                path => 'berry-firmness/:id/'
+            },
+            berry_flavor => {
+                method => 'GET',
+                require_id => 1,
+                path => 'berry-flavor/:id/'
             },
         };
     },
