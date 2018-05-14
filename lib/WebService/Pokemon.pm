@@ -180,9 +180,31 @@ Get the current API version of the web service.
 
 =head2 pokemon
 
-Get the details of a particular Pokémon.
+Get the details of a particular Pokémon either by id or name.
 
     my $pokemon = $pokemon_api->pokemon(id => 1);
+    my $pokemon = $pokemon_api->pokemon(id => 'bulbasaur');
+
+=head2 berry
+
+Get the details of a particular berry either by id or name.
+
+    my $pokemon = $pokemon_api->berry(id => 1);
+    my $pokemon = $pokemon_api->berry(id => 'cheri');
+
+=head2 berry_firmness
+
+Get the details of a particular berry firmness either by id or name.
+
+    my $pokemon = $pokemon_api->berry_firmness(id => 1);
+    my $pokemon = $pokemon_api->berry_firmness(id => 'very-soft');
+
+=head2 berry_flavor
+
+Get the details of a particular berry flavor either by id or name.
+
+    my $pokemon = $pokemon_api->berry_firmness(id => 1);
+    my $pokemon = $pokemon_api->berry_firmness(id => 'spicy');
 
 =head2 commands
 
