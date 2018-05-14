@@ -110,7 +110,7 @@ __END__
 
 =head1 NAME
 
-Webservice::Pokemon - A module to access the Pokémon data through RESTful API
+WebService::Pokemon - A module to access the Pokémon data through RESTful API
 from http://pokeapi.co.
 
 =head1 SYNOPSIS
@@ -119,7 +119,7 @@ from http://pokeapi.co.
 
 =head1 DESCRIPTION
 
-Webservice::Pokemon is a Perl client helper library for the Pokemon API (pokeapi.co).
+WebService::Pokemon is a Perl client helper library for the Pokemon API (pokeapi.co).
 
 =head1 DEVELOPMENT
 
