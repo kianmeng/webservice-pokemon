@@ -5,6 +5,7 @@ requires 'warnings';
 requires 'Mouse';
 requires 'Types::Standard';
 requires 'Web::API';
+requires 'namespace::clean';
 
 on build => sub {
     requires 'Module::Build', '0.28';
