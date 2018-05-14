@@ -11,10 +11,13 @@ my ($poke_api, $got);
 $poke_api = WebService::Pokemon->new;
 
 $got = $poke_api->berry(id => 1);
-is($got->{name}, 'cheri', 'expect berry found');
+is($got->{name}, 'cheri', 'expect berry found by id');
 
 $got = $poke_api->berry(id => 9999999999);
 is($got, undef, 'expect berry not found');
+
+$got = $poke_api->berry(id => 'cheri');
+is($got->{name}, 'cheri', 'expect berry found by name');
 
 my ($result_a, $result_b);
 
