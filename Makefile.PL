@@ -21,9 +21,8 @@ my %WriteMakefileArgs = (
   "MIN_PERL_VERSION" => "5.008001",
   "NAME" => "Webservice::Pokemon",
   "PREREQ_PM" => {
-    "strict" => 0,
+    "strictures" => 0,
     "utf8" => 0,
-    "warnings" => 0
   },
   "TEST_REQUIRES" => {
     "Carp" => 0,
