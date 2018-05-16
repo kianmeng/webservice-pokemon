@@ -51,6 +51,7 @@
             "Mouse" : "0",
             "Types::Standard" : "0",
             "Web::API" : "0",
+            "namespace::clean" : "0",
             "strict" : "0",
             "utf8" : "0",
             "warnings" : "0"
@@ -81,7 +82,7 @@
    },
    "version" : "0.04",
    "x_contributors" : [
-      "Kian-Meng, Ang <kianmeng@users.noreply.github.com>",
+      "Kian Meng Ang <kianmeng@users.noreply.github.com>",
       "Mohammad S Anwar <mohammad.anwar@yahoo.com>"
    ],
    "x_generated_by_perl" : "v5.26.1",
