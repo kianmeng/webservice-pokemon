@@ -1,6 +1,5 @@
-requires 'strict';
 requires 'utf8';
-requires 'warnings';
+requires 'strictures';
 
 requires 'Mouse';
 requires 'Types::Standard';
