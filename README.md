@@ -32,6 +32,7 @@ project.
 
     $ docker build -t webservice-pokemon .
     $ docker run -it -v $(pwd):/root webservice-pokemon bash
+    # cpanm --installdeps --notest .
 
 ## Milla
 
