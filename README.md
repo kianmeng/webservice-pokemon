@@ -23,6 +23,18 @@ WebService::Pokemon is a Perl client helper library for the Pokemon API (pokeapi
 
 # DEVELOPMENT
 
+Source repo at [https://github.com/kianmeng/webservice-pokemon](https://github.com/kianmeng/webservice-pokemon).
+
+## Docker
+
+If you have Docker installed, you can build your Docker container for this
+project.
+
+    $ docker build -t webservice-pokemon .
+    $ docker run -it -v $(pwd):/root webservice-pokemon bash
+
+## Milla
+
 Setting up the required packages.
 
     $ cpanm Dist::Milla
