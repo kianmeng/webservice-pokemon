@@ -11,7 +11,7 @@ with 'Web::API';
 use constant DEFAULT_BASE_API_URL => 'http://pokeapi.co/api/';
 use constant DEFAULT_API_VERSION => 'v2';
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 
 has 'api_version' => (

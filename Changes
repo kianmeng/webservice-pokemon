@@ -2,6 +2,10 @@ Revision history for WebService-Pokemon
 
 {{$NEXT}}
 
+0.06  2018-05-16 22:56:23 +08
+    - Remove unused Makefile.PL
+    - Build and test using Docker
+
 0.05  2018-05-16 21:09:02 +08
     - Fix missing strictures
     - Update synopsis
