@@ -52,9 +52,8 @@
             "Types::Standard" : "0",
             "Web::API" : "0",
             "namespace::clean" : "0",
-            "strict" : "0",
-            "utf8" : "0",
-            "warnings" : "0"
+            "strictures" : "0",
+            "utf8" : "0"
          }
       },
       "test" : {

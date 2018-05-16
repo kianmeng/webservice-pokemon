@@ -115,7 +115,10 @@ from http://pokeapi.co.
 
 =head1 SYNOPSIS
 
-  use WebService::Pokemon;
+    use WebService::Pokemon;
+
+    my $pokemon_api = WebService::Pokemon->new;
+    my $pokemon = $pokemon_api->pokemon(id => 1);
 
 =head1 DESCRIPTION
 

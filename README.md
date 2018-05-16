@@ -14,6 +14,9 @@ from http://pokeapi.co.
 
     use WebService::Pokemon;
 
+    my $pokemon_api = WebService::Pokemon->new;
+    my $pokemon = $pokemon_api->pokemon(id => 1);
+
 # DESCRIPTION
 
 WebService::Pokemon is a Perl client helper library for the Pokemon API (pokeapi.co).
