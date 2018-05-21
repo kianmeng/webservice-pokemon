@@ -13,7 +13,7 @@ $poke_api = WebService::Pokemon->new;
 $got = $poke_api->pokemon(id => 1);
 is($got->{name}, 'bulbasaur', 'expect pokemon found');
 
-$got = $poke_api->pokemon(id => 9999999999);
+$got = $poke_api->pokemon(id => 9_999_999_999);
 is($got, undef, 'expect pokemon not found');
 
 my ($result_a, $result_b);

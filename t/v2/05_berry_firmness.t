@@ -13,7 +13,7 @@ $poke_api = WebService::Pokemon->new;
 $got = $poke_api->berry_firmness(id => 1);
 is($got->{name}, 'very-soft', 'expect berry firmness found by id');
 
-$got = $poke_api->berry_firmness(id => 9999999999);
+$got = $poke_api->berry_firmness(id => 9_999_999_999);
 is($got, undef, 'expect berry firmness not found');
 
 $got = $poke_api->berry_firmness(id => 'very-soft');
