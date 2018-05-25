@@ -119,6 +119,13 @@ Get the details of a particular berry flavor either by id or name.
     my $pokemon = $pokemon_api->berry_firmness(id => 1);
     my $pokemon = $pokemon_api->berry_firmness(id => 'spicy');
 
+## contest\_type
+
+Get the details of a particular contest type either by id or name.
+
+    my $pokemon = $pokemon_api->contest_type(id => 1);
+    my $pokemon = $pokemon_api->contest_type(id => 'cool');
+
 ## commands
 
 # COPYRIGHT AND LICENSE

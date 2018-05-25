@@ -54,6 +54,16 @@ has 'v2_endpoints' => (
                 require_id => 1,
                 path => 'berry-flavor/:id/'
             },
+            contest_types => {
+                method => 'GET',
+                path => 'contest-type/',
+                default_attributes => { limit => 20, offset => 0 }
+            },
+            contest_type => {
+                method => 'GET',
+                require_id => 1,
+                path => 'contest-type/:id/'
+            },
         };
     },
 );
@@ -221,6 +231,13 @@ Get the details of a particular berry flavor either by id or name.
 
     my $pokemon = $pokemon_api->berry_firmness(id => 1);
     my $pokemon = $pokemon_api->berry_firmness(id => 'spicy');
+
+=head2 contest_type
+
+Get the details of a particular contest type either by id or name.
+
+    my $pokemon = $pokemon_api->contest_type(id => 1);
+    my $pokemon = $pokemon_api->contest_type(id => 'cool');
 
 =head2 commands
 
