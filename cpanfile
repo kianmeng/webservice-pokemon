@@ -1,9 +1,12 @@
 requires 'utf8';
 requires 'strictures';
 
-requires 'Mouse';
+requires 'Data::Serializer';
+requires 'Moo';
+requires 'JSON';
+requires 'REST::Client';
+requires 'Role::REST::Client';
 requires 'Types::Standard';
-requires 'Web::API';
 requires 'namespace::clean';
 
 on build => sub {

@@ -51,7 +51,6 @@ Several ways to run the test.
     $ milla test --author --release
     $ AUTHOR_TESTING=1 RELEASE_TESTING=1 milla test
     $ AUTHOR_TESTING=1 RELEASE_TESTING=1 milla run prove t/01_instantiation.t
-    $ LOGGING=1 milla run prove t/t/03_pokemon.t
 
 Release the module.
 
@@ -67,66 +66,29 @@ Construct a new WebService::Pokemon instance. Optionally takes a hash or hash re
     # Instantiate the class.
     my $pokemon_api = WebService::Pokemon->new;
 
-### base\_url
+### api\_url
 
 The URL of the API resource.
 
     # Instantiate the class by setting the URL of the API endpoints.
     my $pokemon_api = WebService::Pokemon->new({api_url => 'http://example.com/api/v2'});
 
-### api\_version
+    # Or after the object was created.
+    my $pokemon_api = WebService::Pokemon->new;
+    $pokemon_api->api_url('http://example.com/api/v2');
 
-The API version of the API endpoints. By default, the API version was set to
-'v2'.
+## resource
 
-    # Instantiate the class by setting the API version.
-    my $pokemon_api = WebService::Pokemon->new({api_version => 'v1'});
+Get the details of a particular resource either by id or name.
 
-## api\_version
+    # Get paginated list of available berry resource.
+    my $berry = $pokemon_api->resource('berry');
 
-Get the current API version of the web service.
+    # Get by id.
+    my $berry_firmness = $pokemon_api->resource('berry-firmnesses', 1);
 
-    my $version = $pokemon_api->api_version();
-
-    # Change the API version.
-    $pokemon_api->api_version('v1');
-
-## pokemon
-
-Get the details of a particular Pokémon either by id or name.
-
-    my $pokemon = $pokemon_api->pokemon(id => 1);
-    my $pokemon = $pokemon_api->pokemon(id => 'bulbasaur');
-
-## berry
-
-Get the details of a particular berry either by id or name.
-
-    my $pokemon = $pokemon_api->berry(id => 1);
-    my $pokemon = $pokemon_api->berry(id => 'cheri');
-
-## berry\_firmness
-
-Get the details of a particular berry firmness either by id or name.
-
-    my $pokemon = $pokemon_api->berry_firmness(id => 1);
-    my $pokemon = $pokemon_api->berry_firmness(id => 'very-soft');
-
-## berry\_flavor
-
-Get the details of a particular berry flavor either by id or name.
-
-    my $pokemon = $pokemon_api->berry_firmness(id => 1);
-    my $pokemon = $pokemon_api->berry_firmness(id => 'spicy');
-
-## contest\_type
-
-Get the details of a particular contest type either by id or name.
-
-    my $pokemon = $pokemon_api->contest_type(id => 1);
-    my $pokemon = $pokemon_api->contest_type(id => 'cool');
-
-## commands
+    # Get by name.
+    my $berry_firmness = $pokemon_api->resource('berry-firmnesses', 'very-soft');
 
 # COPYRIGHT AND LICENSE
 
