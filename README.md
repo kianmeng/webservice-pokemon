@@ -82,12 +82,27 @@ The URL of the API resource.
     my $pokemon_api = WebService::Pokemon->new;
     $pokemon_api->api_url('http://example.com/api/v2');
 
-## resource
+### cache\_root
 
-Get the details of a particular resource either by id or name.
+The cache directory of the HTTP reponse encoded data. By default, all cached
+data is stored in /tmp/cache/.
+
+    my $pokemon_api = WebService::Pokemon->new({cache_root => '/tmp/somewhere/'});
+
+    # Or after the object was created.
+    my $pokemon_api = WebService::Pokemon->new;
+    $pokemon_api->cache_root('/tmp/somewhere/');
+
+## resource($resource, \[$name\], \[$limit\], \[$offset\])
+
+Get the details of a particular resource with optional id or name; limit per
+page, or offset by the record list.
 
     # Get paginated list of available berry resource.
     my $berry = $pokemon_api->resource('berry');
+
+    # Or by page through limit and pagination.
+    my $berry = $pokemon_api->resource('berry', undef, 60, 20);
 
     # Get by id.
     my $berry_firmness = $pokemon_api->resource('berry-firmnesses', 1);
