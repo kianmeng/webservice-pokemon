@@ -112,7 +112,12 @@ from http://pokeapi.co.
     use WebService::Pokemon;
 
     my $pokemon_api = WebService::Pokemon->new;
-    my $pokemon = $pokemon_api->pokemon(id => 1);
+
+    # By id.
+    my $pokemon = $pokemon_api->resource('berry', 1);
+
+    # By name.
+    my $pokemon = $pokemon_api->resource('berry', 'cheri');
 
 =head1 DESCRIPTION
 
