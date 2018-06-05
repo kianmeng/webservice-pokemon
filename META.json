@@ -48,9 +48,12 @@
       },
       "runtime" : {
          "requires" : {
-            "Mouse" : "0",
+            "Data::Serializer" : "0",
+            "JSON" : "0",
+            "Moo" : "0",
+            "REST::Client" : "0",
+            "Role::REST::Client" : "0",
             "Types::Standard" : "0",
-            "Web::API" : "0",
             "namespace::clean" : "0",
             "strictures" : "0",
             "utf8" : "0"

@@ -59,8 +59,6 @@ sub _request {
     $endpoint .= "/" . $resource;
     $endpoint .= "/" . $name if (defined $name);
 
-    use Test::More;
-    diag explain $self->api_url . $endpoint;
     my $response = $self->get($endpoint, $queries);
 
     return $response->data;
