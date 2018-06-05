@@ -1,6 +1,7 @@
 requires 'utf8';
 requires 'strictures';
 
+requires 'CHI';
 requires 'Data::Serializer';
 requires 'Moo';
 requires 'JSON';

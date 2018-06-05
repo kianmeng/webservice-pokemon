@@ -4,12 +4,13 @@ use utf8;
 use strictures 2;
 use namespace::clean;
 
+use CHI;
 use Moo;
 use Types::Standard qw(Str);
 
 with 'Role::REST::Client';
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 
 has 'api_url' => (
@@ -17,6 +18,28 @@ has 'api_url' => (
     is      => 'rw',
     default => sub { 'https://pokeapi.co/api/v2' },
 );
+
+has 'cache_path' => (
+    isa     => Str,
+    is      => 'rw',
+    default => sub { '/tmp/cache/' },
+);
+
+has cache => (
+    is      => 'ro',
+    lazy    => 1,
+    builder => 1,
+);
+
+sub _build_cache {
+    my $self = shift;
+
+    return CHI->new(
+        driver => 'File',
+        namespace => 'pokemon',
+        root_dir => $self->cache_path
+    );
+}
 
 sub BUILD {
     my ($self, $args) = @_;
@@ -59,9 +82,18 @@ sub _request {
     $endpoint .= "/" . $resource;
     $endpoint .= "/" . $name if (defined $name);
 
-    my $response = $self->get($endpoint, $queries);
+    my $cache_decoded_content = $self->cache->get($endpoint);
+    if (defined $cache_decoded_content) {
+        my $deserializer = $self->_serializer(qq|application/json|);
 
-    return $response->data;
+        return $deserializer->deserialize($cache_decoded_content);
+    }
+    else {
+        my $response = $self->get($endpoint, $queries);
+        $self->cache->set($endpoint, $response->response->decoded_content);
+
+        return $response->data;
+    }
 }
 
 
