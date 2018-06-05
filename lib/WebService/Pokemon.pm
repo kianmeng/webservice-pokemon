@@ -38,7 +38,7 @@ sub resource {
     my $queries;
     if (!defined $name) {
         $queries->{limit} = $limit || 20;
-        $queries->{offset} = $limit || 0;
+        $queries->{offset} = $offset || 0;
     }
 
     return $self->_request($resource, $name, $queries);
