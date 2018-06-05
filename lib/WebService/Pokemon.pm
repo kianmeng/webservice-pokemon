@@ -5,7 +5,7 @@ use strictures 2;
 use namespace::clean;
 
 use Moo;
-use Types::Standard qw(Str ArrayRef);
+use Types::Standard qw(Str);
 
 with 'Role::REST::Client';
 
