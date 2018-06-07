@@ -5,7 +5,9 @@ use strictures 2;
 use namespace::clean;
 
 use CHI;
+use Digest::MD5 qw(md5_hex);
 use Moo;
+use Sereal qw(encode_sereal decode_sereal);
 use Types::Standard qw(Str);
 
 with 'Role::REST::Client';
@@ -19,14 +21,8 @@ has 'api_url' => (
     default => sub { 'https://pokeapi.co/api/v2' },
 );
 
-has 'cache_path' => (
-    isa     => Str,
-    is      => 'rw',
-    default => sub { '/tmp/cache/' },
-);
-
 has cache => (
-    is      => 'ro',
+    is      => 'rw',
     lazy    => 1,
     builder => 1,
 );
@@ -36,8 +32,8 @@ sub _build_cache {
 
     return CHI->new(
         driver => 'File',
-        namespace => 'pokemon',
-        root_dir => $self->cache_path
+        namespace => 'restcountries',
+        root_dir => '/tmp/cache/',
     );
 }
 
@@ -82,18 +78,21 @@ sub _request {
     $endpoint .= "/" . $resource;
     $endpoint .= "/" . $name if (defined $name);
 
-    my $cache_decoded_content = $self->cache->get($endpoint);
-    if (defined $cache_decoded_content) {
-        my $deserializer = $self->_serializer(qq|application/json|);
+    my $response_data;
+    my $cache_key = md5_hex($endpoint . encode_sereal($queries));
 
-        return $deserializer->deserialize($cache_decoded_content);
+    my $cache_response_data = $self->cache->get($cache_key);
+    if (defined $cache_response_data) {
+        $response_data = decode_sereal($cache_response_data);
     }
     else {
         my $response = $self->get($endpoint, $queries);
-        $self->cache->set($endpoint, $response->response->decoded_content);
+        $response_data = $response->data;
 
-        return $response->data;
+        $self->cache->set($cache_key, encode_sereal($response->data));
     }
+
+    return $response_data;
 }
 
 
