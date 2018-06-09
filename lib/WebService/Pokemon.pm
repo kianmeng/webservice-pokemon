@@ -13,6 +13,9 @@ use Types::Standard qw(Str);
 use WebService::Pokemon::APIResourceList;
 use WebService::Pokemon::NamedAPIResource;
 
+use constant DEFAULT_ITEMS_PER_PAGE => 20;
+use constant DEFAULT_ITEMS_OFFSET => 0;
+
 with 'Role::REST::Client';
 
 our $VERSION = '0.09';
@@ -91,8 +94,8 @@ sub resource {
 
     my $queries;
     if (!defined $id_or_name) {
-        $queries->{limit} = $limit || 20;
-        $queries->{offset} = $offset || 0;
+        $queries->{limit} = $limit || DEFAULT_ITEMS_PER_PAGE;
+        $queries->{offset} = $offset || DEFAULT_ITEMS_OFFSET;
 
         my $response = $self->_request($resource, $id_or_name, $queries);
         return WebService::Pokemon::APIResourceList->new(api => $self, response => $response);
