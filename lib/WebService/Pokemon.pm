@@ -12,6 +12,9 @@ use Types::Standard qw(Str);
 
 with 'Role::REST::Client';
 
+use WebService::Pokemon::APIResourceList;
+use WebService::Pokemon::NamedAPIResource;
+
 our $VERSION = '0.08';
 
 
@@ -51,18 +54,6 @@ sub BUILD {
     return $self;
 }
 
-sub resource {
-    my ($self, $resource, $name, $limit, $offset) = @_;
-
-    my $queries;
-    if (!defined $name) {
-        $queries->{limit} = $limit || 20;
-        $queries->{offset} = $offset || 0;
-    }
-
-    return $self->_request($resource, $name, $queries);
-}
-
 sub _request {
     my ($self, $resource, $name, $queries) = @_;
 
@@ -93,6 +84,22 @@ sub _request {
     }
 
     return $response_data;
+}
+
+sub resource {
+    my ($self, $resource, $id_or_name, $limit, $offset) = @_;
+
+    my $queries;
+    if (!defined $id_or_name) {
+        $queries->{limit} = $limit || 20;
+        $queries->{offset} = $offset || 0;
+
+        my $response = $self->_request($resource, $id_or_name, $queries);
+        return WebService::Pokemon::APIResourceList->new(api => $self, response => $response);
+    }
+
+    my $response = $self->_request($resource, $id_or_name, $queries);
+    return WebService::Pokemon::NamedAPIResource->new(api => $self, response => $response);
 }
 
 
