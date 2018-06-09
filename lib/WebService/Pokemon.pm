@@ -10,10 +10,10 @@ use Moo;
 use Sereal qw(encode_sereal decode_sereal);
 use Types::Standard qw(Str);
 
-with 'Role::REST::Client';
-
 use WebService::Pokemon::APIResourceList;
 use WebService::Pokemon::NamedAPIResource;
+
+with 'Role::REST::Client';
 
 our $VERSION = '0.09';
 
@@ -55,7 +55,7 @@ sub BUILD {
 }
 
 sub _request {
-    my ($self, $resource, $name, $queries) = @_;
+    my ($self, $resource, $id_or_name, $queries) = @_;
 
     return if (!defined $resource || length $resource <= 0);
 
@@ -67,7 +67,7 @@ sub _request {
 
     my $endpoint = q||;
     $endpoint .= "/" . $resource;
-    $endpoint .= "/" . $name if (defined $name);
+    $endpoint .= "/" . $id_or_name if (defined $id_or_name);
 
     my $response_data;
     my $cache_key = md5_hex($endpoint . encode_sereal($queries));
