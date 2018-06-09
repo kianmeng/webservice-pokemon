@@ -15,7 +15,7 @@ with 'Role::REST::Client';
 use WebService::Pokemon::APIResourceList;
 use WebService::Pokemon::NamedAPIResource;
 
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 
 has 'api_url' => (

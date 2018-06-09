@@ -7,7 +7,7 @@ use namespace::clean;
 use Moo::Role;
 use Types::Standard qw(HashRef InstanceOf);
 
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 
 has api => (

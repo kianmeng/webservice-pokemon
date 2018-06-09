@@ -8,7 +8,7 @@ use Moo;
 
 with 'WebService::Pokemon::Role::APIResource';
 
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 
 1;
