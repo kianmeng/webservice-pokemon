@@ -20,12 +20,11 @@ has response => (
     is  => 'rw',
 );
 
+
 sub BUILD {
     my ($self, $args) = @_;
 
-    foreach my $arg (keys %$args) {
-        $self->$arg($args->{$arg}) if (defined $args->{$arg});
-    }
+    $self->populate_attributes($args);
 
     foreach my $arg (keys %{$self->response}) {
         if (!$self->can($arg)) {
@@ -37,6 +36,13 @@ sub BUILD {
     return $self;
 }
 
+sub populate_attributes {
+    my ($self, $args) = @_;
+
+    foreach my $arg (keys %$args) {
+        $self->$arg($args->{$arg}) if (defined $args->{$arg});
+    }
+}
 
 1;
 __END__
