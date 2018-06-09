@@ -82,16 +82,32 @@ The URL of the API resource.
     my $pokemon_api = WebService::Pokemon->new;
     $pokemon_api->api_url('http://example.com/api/v2');
 
-### cache\_root
+### cache
 
-The cache directory of the HTTP reponse encoded data. By default, all cached
-data is stored in /tmp/cache/.
+The cache directory of the HTTP reponses. By default, all cached data is stored
+as files in /tmp/cache/.
 
-    my $pokemon_api = WebService::Pokemon->new({cache_root => '/tmp/somewhere/'});
+    # Default cache engine is file-based storage.
+    my $pokemon_api = WebService::Pokemon->new;
+
+    # Or we define our custom cache engine with settings.
+    my $pokemon_api = WebService::Pokemon->new(
+        cache => CHI->new(
+            driver => 'File',
+            namespace => 'restcountries',
+            root_dir => $ENV{PWD} . '/tmp/cache/',
+        )
+    );
 
     # Or after the object was created.
     my $pokemon_api = WebService::Pokemon->new;
-    $pokemon_api->cache_root('/tmp/somewhere/');
+    $pokemon_api->cache(
+        cache => CHI->new(
+            driver => 'File',
+            namespace => 'restcountries',
+            root_dir => $ENV{PWD} . '/tmp/cache/',
+        )
+    );
 
 ## resource($resource, \[$name\], \[$limit\], \[$offset\])
 
