@@ -5,12 +5,13 @@ use strictures 2;
 use namespace::clean;
 
 use Moo::Role;
-use Types::Standard qw(HashRef);
+use Types::Standard qw(HashRef InstanceOf);
 
 our $VERSION = '0.08';
 
 
 has api => (
+    isa => InstanceOf['WebService::Pokemon'],
     is => 'rw',
 );
 
