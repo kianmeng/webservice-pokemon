@@ -9,6 +9,7 @@ use Digest::MD5 qw(md5_hex);
 use Moo;
 use Sereal qw(encode_sereal decode_sereal);
 use Types::Standard qw(Str);
+use URI::Fast qw(uri);
 
 use WebService::Pokemon::APIResourceList;
 use WebService::Pokemon::NamedAPIResource;
@@ -103,6 +104,26 @@ sub resource {
 
     my $response = $self->_request($resource, $id_or_name, $queries);
     return WebService::Pokemon::NamedAPIResource->new(api => $self, response => $response);
+}
+
+sub resource_by_url {
+    my ($self, $url) = @_;
+
+    my $uri = uri($url);
+    use Test::More;
+
+    my ($resource, $id_or_name);
+
+    my $split_path = $uri->split_path;
+    if (scalar @$split_path == 3) {
+        $resource = @$split_path[-1];
+    }
+    else {
+        $resource = @$split_path[-2];
+        $id_or_name = @$split_path[-1];
+    }
+
+    return $self->resource($resource, $id_or_name, $uri->param('limit'), $uri->param('offset'));
 }
 
 
@@ -231,6 +252,19 @@ page, or offset by the record list.
 
     # Get by name.
     my $berry_firmness = $pokemon_api->resource('berry-firmnesses', 'very-soft');
+
+=head2 resource_by_url($url)
+
+Get the details of a particular resource by full URL.
+
+    # Get paginated list of available berry resource with default item size.
+    my $berries = $pokemon_api->resource_by_url('https://pokeapi.co/api/v2/berry/');
+
+    # Get paginated list of available berry resource with explicit default item size.
+    my $berries = $pokemon_api->resource_by_url('https://pokeapi.co/api/v2/berry/?limit=20&offset=40');
+
+    # Get particular berry resource.
+    my $berry = $pokemon_api->resource_by_url('https://pokeapi.co/api/v2/berry/1');
 
 =head1 COPYRIGHT AND LICENSE
 

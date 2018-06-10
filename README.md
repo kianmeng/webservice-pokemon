@@ -126,6 +126,19 @@ page, or offset by the record list.
     # Get by name.
     my $berry_firmness = $pokemon_api->resource('berry-firmnesses', 'very-soft');
 
+## resource\_by\_url($url)
+
+Get the details of a particular resource by full URL.
+
+    # Get paginated list of available berry resource with default item size.
+    my $berries = $pokemon_api->resource_by_url('https://pokeapi.co/api/v2/berry/');
+
+    # Get paginated list of available berry resource with explicit default item size.
+    my $berries = $pokemon_api->resource_by_url('https://pokeapi.co/api/v2/berry/?limit=20&offset=40');
+
+    # Get particular berry resource.
+    my $berry = $pokemon_api->resource_by_url('https://pokeapi.co/api/v2/berry/1');
+
 # COPYRIGHT AND LICENSE
 
 This software is Copyright (c) 2018 by Kian Meng, Ang.

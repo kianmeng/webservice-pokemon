@@ -11,6 +11,7 @@ requires 'REST::Client';
 requires 'Role::REST::Client';
 requires 'Sereal';
 requires 'Types::Standard';
+requires 'URI::Fast';
 
 on build => sub {
     requires 'Module::Build', '0.28';

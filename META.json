@@ -57,6 +57,7 @@
             "Role::REST::Client" : "0",
             "Sereal" : "0",
             "Types::Standard" : "0",
+            "URI::Fast" : "0",
             "namespace::clean" : "0",
             "strictures" : "0",
             "utf8" : "0"
