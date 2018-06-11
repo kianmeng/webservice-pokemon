@@ -27,10 +27,8 @@ sub BUILD {
     $self->populate_attributes($args);
 
     foreach my $arg (keys %{$self->response}) {
-        if (!$self->can($arg)) {
-            $self->meta->add_attribute($arg => ( is => 'rw'));
-            $self->$arg($self->response->{$arg});
-        }
+        $self->meta->add_attribute($arg => ( is => 'rw'));
+        $self->$arg($self->response->{$arg});
     }
 
     return $self;

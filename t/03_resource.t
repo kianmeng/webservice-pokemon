@@ -29,4 +29,7 @@ is($got->{next}, 'https://pokeapi.co/api/v2/berry/?limit=20&offset=20', 'expect 
 is(scalar @{$got->names}, 20, 'expect resource name count tally');
 is(scalar @{$got->urls}, 20, 'expect resource url count tally');
 
+$got = $api->resource('berry');
+is($got->{count}, 64, 'expect resource count tally for second call');
+
 done_testing;
