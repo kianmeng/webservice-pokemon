@@ -14,10 +14,10 @@ use URI::Fast qw(uri);
 use WebService::Pokemon::APIResourceList;
 use WebService::Pokemon::NamedAPIResource;
 
+with 'Role::REST::Client';
+
 use constant DEFAULT_ITEMS_PER_PAGE => 20;
 use constant DEFAULT_ITEMS_OFFSET => 0;
-
-with 'Role::REST::Client';
 
 our $VERSION = '0.09';
 
@@ -99,10 +99,12 @@ sub resource {
         $queries->{offset} = $offset || DEFAULT_ITEMS_OFFSET;
 
         my $response = $self->_request($resource, $id_or_name, $queries);
+
         return WebService::Pokemon::APIResourceList->new(api => $self, response => $response);
     }
 
     my $response = $self->_request($resource, $id_or_name, $queries);
+
     return WebService::Pokemon::NamedAPIResource->new(api => $self, response => $response);
 }
 
