@@ -20,8 +20,9 @@ my $api = WebService::Pokemon->new(
 $url = 'https://pokeapi.co/api/v2/berry/?limit=20&offset=20';
 $got = $api->resource_by_url($url);
 is(ref $got, 'WebService::Pokemon::APIResourceList', 'expect class type');
-is($got->{count}, 64, 'expect resource count tally');
-is($got->{next}, 'https://pokeapi.co/api/v2/berry/?limit=20&offset=40', 'expect next URL found');
+is($got->count, 64, 'expect resource count tally');
+is($got->previous, 'https://pokeapi.co/api/v2/berry/?limit=20', 'expect previous URL found');
+is($got->next, 'https://pokeapi.co/api/v2/berry/?limit=20&offset=40', 'expect next URL found');
 
 $url = 'https://pokeapi.co/api/v2/berry/1';
 $got = $api->resource_by_url($url);

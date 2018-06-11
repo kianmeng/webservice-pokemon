@@ -8,7 +8,7 @@ use CHI;
 use Digest::MD5 qw(md5_hex);
 use Moo;
 use Sereal qw(encode_sereal decode_sereal);
-use Types::Standard qw(Str);
+use Types::Standard qw(Bool Str);
 use URI::Fast qw(uri);
 
 use WebService::Pokemon::APIResourceList;
@@ -43,6 +43,13 @@ sub _build_cache {
         root_dir => '/tmp/cache/',
     );
 }
+
+has autoload => (
+    isa => Bool,
+    is  => 'rw',
+    default => sub { 0 },
+);
+
 
 sub BUILD {
     my ($self, $args) = @_;
@@ -236,6 +243,18 @@ as files in /tmp/cache/.
             root_dir => $ENV{PWD} . '/tmp/cache/',
         )
     );
+
+=head3 autoload
+
+Set this if you want to expand all fields point to external URL.
+
+    # Instantiate the class by setting the URL of the API endpoints.
+    my $pokemon_api = WebService::Pokemon->new({autoload => 1});
+
+    # Or after the object was created.
+    my $pokemon_api = WebService::Pokemon->new;
+    $pokemon_api->autoload(1);
+    $pokemon_api->resource('berry');
 
 =head2 resource($resource, [$name], [$limit], [$offset])
 

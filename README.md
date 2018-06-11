@@ -109,6 +109,18 @@ as files in /tmp/cache/.
         )
     );
 
+### autoload
+
+Set this if you want to expand all fields point to external URL.
+
+    # Instantiate the class by setting the URL of the API endpoints.
+    my $pokemon_api = WebService::Pokemon->new({autoload => 1});
+
+    # Or after the object was created.
+    my $pokemon_api = WebService::Pokemon->new;
+    $pokemon_api->autoload(1);
+    $pokemon_api->resource('berry');
+
 ## resource($resource, \[$name\], \[$limit\], \[$offset\])
 
 Get the details of a particular resource with optional id or name; limit per
