@@ -112,7 +112,6 @@ sub resource_by_url {
     my ($self, $url) = @_;
 
     my $uri = uri($url);
-    use Test::More;
 
     my ($resource, $id_or_name);
 
