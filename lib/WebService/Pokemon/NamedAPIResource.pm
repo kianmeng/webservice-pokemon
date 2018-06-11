@@ -5,7 +5,7 @@ use strictures 2;
 use namespace::clean;
 
 use Moo;
-use Types::Standard qw(Bool HashRef InstanceOf);
+use Types::Standard qw(HashRef InstanceOf);
 
 our $VERSION = '0.09';
 
