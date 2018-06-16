@@ -29,7 +29,28 @@ sub BUILD {
 
     foreach my $arg (keys %{$self->response}) {
         $self->meta->add_attribute($arg => ( is => 'rw', lazy => 1, builder => 1 ));
-        $self->$arg($self->response->{$arg});
+
+        my $value = $self->response->{$arg};
+
+        if (ref $value eq 'HASH') {
+            $value = WebService::Pokemon::NamedAPIResource->new(
+                api => $self->api,
+                response => $value
+            );
+        }
+
+        if (ref $value eq 'ARRAY') {
+            my $list;
+            foreach my $v (@$value) {
+                push @$list, WebService::Pokemon::NamedAPIResource->new(
+                    api => $self->api,
+                    response => $v
+                );
+            }
+            $value = $list;
+        }
+
+        $self->$arg($value);
     }
 
     return $self;
