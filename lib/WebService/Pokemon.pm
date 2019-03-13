@@ -142,8 +142,8 @@ __END__
 
 =head1 NAME
 
-WebService::Pokemon - A module to access the Pokémon data through RESTful API
-from http://pokeapi.co.
+WebService::Pokemon - Perl library for accessing the Pokémon data,
+http://pokeapi.co.
 
 =head1 SYNOPSIS
 

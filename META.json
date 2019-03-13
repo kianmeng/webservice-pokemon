@@ -1,5 +1,5 @@
 {
-   "abstract" : "A module to access the Pok\u00e9mon data through RESTful API from http://pokeapi.co.",
+   "abstract" : "Perl library for accessing the Pok\u00e9mon data, http://pokeapi.co.",
    "author" : [
       "Kian Meng, Ang."
    ],
@@ -68,7 +68,10 @@
             "Carp" : "0",
             "Dist::Zilla::App::Command::cover" : "0",
             "File::Find" : "0",
+            "File::Spec" : "0",
             "File::Temp" : "0",
+            "IO::Handle" : "0",
+            "IPC::Open3" : "0",
             "Scalar::Util" : "0",
             "Test::More" : "0.94"
          }
@@ -91,7 +94,7 @@
       "Kian Meng Ang <kianmeng@users.noreply.github.com>",
       "Mohammad S Anwar <mohammad.anwar@yahoo.com>"
    ],
-   "x_generated_by_perl" : "v5.26.1",
+   "x_generated_by_perl" : "v5.26.2",
    "x_serialization_backend" : "JSON::XS version 3.04",
    "x_static_install" : 0
 }
