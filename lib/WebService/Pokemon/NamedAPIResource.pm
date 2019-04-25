@@ -9,7 +9,6 @@ use Types::Standard qw(HashRef InstanceOf);
 
 our $VERSION = '0.09';
 
-
 has api => (
     isa => InstanceOf['WebService::Pokemon'],
     is => 'rw',
@@ -23,12 +22,14 @@ has response => (
 sub BUILD {
     my ($self, $args) = @_;
 
-    foreach my $arg (keys %$args) {
+    foreach my $arg (keys %{$args}) {
         $self->$arg($args->{$arg}) if (defined $args->{$arg});
     }
 
     foreach my $arg (keys %{$self->response}) {
-        $self->meta->add_attribute($arg => ( is => 'rw', lazy => 1, builder => 1 ));
+        $self->meta->add_attribute(
+            $arg => (is => 'rw', lazy => 1, builder => 1)
+        );
 
         my $value = $self->response->{$arg};
 
@@ -41,11 +42,12 @@ sub BUILD {
 
         if (ref $value eq 'ARRAY') {
             my $list;
-            foreach my $v (@$value) {
-                push @$list, WebService::Pokemon::NamedAPIResource->new(
-                    api => $self->api,
-                    response => $v
-                );
+            foreach my $v (@{$value}) {
+                push @{$list},
+                    WebService::Pokemon::NamedAPIResource->new(
+                        api => $self->api,
+                        response => $v
+                    );
             }
             $value = $list;
         }
@@ -56,6 +58,4 @@ sub BUILD {
     return $self;
 }
 
-
 1;
-__END__

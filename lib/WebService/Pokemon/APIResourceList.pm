@@ -10,7 +10,6 @@ use Test::More;
 
 our $VERSION = '0.09';
 
-
 has api => (
     isa => InstanceOf['WebService::Pokemon'],
     is => 'rw',
@@ -63,16 +62,14 @@ sub _build_results {
 
     return $self->response->{results} if (!$self->api->autoload);
 
-    my $urls = [ map { $_->{url} } @{$self->response->{results}} ];
+    my $urls = [map { $_->{url} } @{$self->response->{results}}];
 
     my $results = [];
-    foreach my $url (@$urls) {
-        push @$results, $self->api->resource_by_url($url);
+    foreach my $url (@{$urls}) {
+        push @{$results}, $self->api->resource_by_url($url);
     }
 
     return $results;
 }
 
-
 1;
-__END__

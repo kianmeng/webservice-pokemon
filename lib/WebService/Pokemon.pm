@@ -21,7 +21,6 @@ use constant DEFAULT_ITEMS_OFFSET => 0;
 
 our $VERSION = '0.09';
 
-
 has 'api_url' => (
     isa     => Str,
     is      => 'rw',
@@ -50,16 +49,15 @@ has autoload => (
     default => sub { 0 },
 );
 
-
 sub BUILD {
     my ($self, $args) = @_;
 
-    foreach my $arg (keys %$args) {
+    foreach my $arg (keys %{$args}) {
         $self->$arg($args->{$arg}) if (defined $args->{$arg});
     }
 
     $self->set_persistent_header('User-Agent' => __PACKAGE__ . q| |
-          . ($WebService::Pokemon::VERSION || q||));
+        . ($WebService::Pokemon::VERSION || q||));
     $self->server($self->api_url);
 
     return $self;
@@ -74,11 +72,11 @@ sub _request {
 
     # In case the api_url was updated.
     $self->server($self->api_url);
-    $self->type(qq|application/json|);
+    $self->type(q|application/json|);
 
     my $endpoint = q||;
-    $endpoint .= "/" . $resource;
-    $endpoint .= "/" . $id_or_name if (defined $id_or_name);
+    $endpoint .= qq|/$resource|;
+    $endpoint .= qq|/$id_or_name| if (defined $id_or_name);
 
     my $response_data;
     my $cache_key = md5_hex($endpoint . encode_sereal($queries));
@@ -107,12 +105,18 @@ sub resource {
 
         my $response = $self->_request($resource, $id_or_name, $queries);
 
-        return WebService::Pokemon::APIResourceList->new(api => $self, response => $response);
+        return WebService::Pokemon::APIResourceList->new(
+            api => $self,
+            response => $response
+        );
     }
 
     my $response = $self->_request($resource, $id_or_name, $queries);
 
-    return WebService::Pokemon::NamedAPIResource->new(api => $self, response => $response);
+    return WebService::Pokemon::NamedAPIResource->new(
+        api => $self,
+        response => $response
+    );
 }
 
 sub resource_by_url {
@@ -123,22 +127,26 @@ sub resource_by_url {
     my ($resource, $id_or_name);
 
     my $split_path = $uri->split_path;
-    if (scalar @$split_path == 3) {
-        $resource = @$split_path[-1];
+    if (scalar @{$split_path} == 3) {
+        $resource = @{$split_path}[-1];
     }
     else {
-        $resource = @$split_path[-2];
-        $id_or_name = @$split_path[-1];
+        $resource = @{$split_path}[-2];
+        $id_or_name = @{$split_path}[-1];
     }
 
-    return $self->resource($resource, $id_or_name, $uri->param('limit'), $uri->param('offset'));
+    return $self->resource(
+        $resource, $id_or_name,
+        $uri->param('limit'),
+        $uri->param('offset'));
 }
-
 
 1;
 __END__
 
 =encoding utf-8
+
+=for stopwords pokemon pokémon pokeapi
 
 =head1 NAME
 
@@ -163,39 +171,9 @@ WebService::Pokemon is a Perl client helper library for the Pokemon API (pokeapi
 
 =head1 DEVELOPMENT
 
-Source repo at L<https://github.com/kianmeng/webservice-pokemon|https://github.com/kianmeng/webservice-pokemon>.
+Source repository at L<https://github.com/kianmeng/webservice-pokemon|https://github.com/kianmeng/webservice-pokemon>.
 
-=head2 Docker
-
-If you have Docker installed, you can build your Docker container for this
-project.
-
-    $ docker build -t webservice-pokemon .
-    $ docker run -it -v $(pwd):/root webservice-pokemon bash
-    # cpanm --installdeps --notest .
-
-=head2 Milla
-
-Setting up the required packages.
-
-    $ milla authordeps --missing | cpanm
-    $ milla listdeps --missing | cpanm
-
-Check you code coverage.
-
-    $ milla cover
-
-Several ways to run the test.
-
-    $ milla test
-    $ milla test --author --release
-    $ AUTHOR_TESTING=1 RELEASE_TESTING=1 milla test
-    $ AUTHOR_TESTING=1 RELEASE_TESTING=1 milla run prove t/01_instantiation.t
-
-Release the module.
-
-    $ milla build
-    $ milla release
+How to contribute? Follow through the L<CONTRIBUTING.md|https://github.com/kianmeng/webservice-pokemon/blob/master/CONTRIBUTING.md> document to setup your development environment.
 
 =head1 METHODS
 
@@ -219,7 +197,7 @@ The URL of the API resource.
 
 =head3 cache
 
-The cache directory of the HTTP reponses. By default, all cached data is stored
+The cache directory of the HTTP responses. By default, all cached data is stored
 as files in /tmp/cache/.
 
     # Default cache engine is file-based storage.

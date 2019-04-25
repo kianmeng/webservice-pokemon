@@ -25,39 +25,9 @@ WebService::Pokemon is a Perl client helper library for the Pokemon API (pokeapi
 
 # DEVELOPMENT
 
-Source repo at [https://github.com/kianmeng/webservice-pokemon](https://github.com/kianmeng/webservice-pokemon).
+Source repository at [https://github.com/kianmeng/webservice-pokemon](https://github.com/kianmeng/webservice-pokemon).
 
-## Docker
-
-If you have Docker installed, you can build your Docker container for this
-project.
-
-    $ docker build -t webservice-pokemon .
-    $ docker run -it -v $(pwd):/root webservice-pokemon bash
-    # cpanm --installdeps --notest .
-
-## Milla
-
-Setting up the required packages.
-
-    $ milla authordeps --missing | cpanm
-    $ milla listdeps --missing | cpanm
-
-Check you code coverage.
-
-    $ milla cover
-
-Several ways to run the test.
-
-    $ milla test
-    $ milla test --author --release
-    $ AUTHOR_TESTING=1 RELEASE_TESTING=1 milla test
-    $ AUTHOR_TESTING=1 RELEASE_TESTING=1 milla run prove t/01_instantiation.t
-
-Release the module.
-
-    $ milla build
-    $ milla release
+How to contribute? Follow through the [CONTRIBUTING.md](https://github.com/kianmeng/webservice-pokemon/blob/master/CONTRIBUTING.md) document to setup your development environment.
 
 # METHODS
 
@@ -81,7 +51,7 @@ The URL of the API resource.
 
 ### cache
 
-The cache directory of the HTTP reponses. By default, all cached data is stored
+The cache directory of the HTTP responses. By default, all cached data is stored
 as files in /tmp/cache/.
 
     # Default cache engine is file-based storage.
