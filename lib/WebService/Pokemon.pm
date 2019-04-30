@@ -22,14 +22,14 @@ use constant DEFAULT_ITEMS_OFFSET => 0;
 our $VERSION = '0.09';
 
 has 'api_url' => (
-    isa     => Str,
-    is      => 'rw',
+    isa => Str,
+    is => 'rw',
     default => sub { 'https://pokeapi.co/api/v2' },
 );
 
 has cache => (
-    is      => 'rw',
-    lazy    => 1,
+    is => 'rw',
+    lazy => 1,
     builder => 1,
 );
 
@@ -57,7 +57,7 @@ sub BUILD {
     }
 
     $self->set_persistent_header('User-Agent' => __PACKAGE__ . q| |
-        . ($WebService::Pokemon::VERSION || q||));
+            . ($WebService::Pokemon::VERSION || q||));
     $self->server($self->api_url);
 
     return $self;
@@ -146,7 +146,7 @@ __END__
 
 =encoding utf-8
 
-=for stopwords pokemon pokémon pokeapi
+=for stopwords pokemon pokémon pokeapi autoload
 
 =head1 NAME
 
