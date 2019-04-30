@@ -118,14 +118,14 @@ Get the details of a particular resource by full URL.
     # Get particular berry resource.
     my $berry = $pokemon_api->resource_by_url('https://pokeapi.co/api/v2/berry/1');
 
+# AUTHOR
+
+Kian Meng, Ang <kianmeng@cpan.org>
+
 # COPYRIGHT AND LICENSE
 
-This software is Copyright (c) 2018 by Kian Meng, Ang.
+This software is Copyright (c) 2018-2019 by Kian Meng, Ang.
 
 This is free software, licensed under:
 
     The Artistic License 2.0 (GPL Compatible)
-
-# AUTHOR
-
-Kian Meng, Ang <kianmeng@users.noreply.github.com>
