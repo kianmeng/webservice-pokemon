@@ -78,19 +78,8 @@ sub _request {
     $endpoint .= qq|/$resource|;
     $endpoint .= qq|/$id_or_name| if (defined $id_or_name);
 
-    my $response_data;
-    my $cache_key = md5_hex($endpoint . encode_sereal($queries));
-
-    my $cache_response_data = $self->cache->get($cache_key);
-    if (defined $cache_response_data) {
-        $response_data = decode_sereal($cache_response_data);
-    }
-    else {
-        my $response = $self->get($endpoint, $queries);
-        $response_data = $response->data;
-
-        $self->cache->set($cache_key, encode_sereal($response->data));
-    }
+    my $response = $self->get($endpoint, $queries);
+    my $response_data = $response->data;
 
     return $response_data;
 }

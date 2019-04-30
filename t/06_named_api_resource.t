@@ -9,13 +9,7 @@ use WebService::Pokemon;
 
 my ($got, $expect) = ('', '');
 
-my $api = WebService::Pokemon->new(
-    cache => CHI->new(
-        driver => 'File',
-        namespace => 'restcountries',
-        root_dir => $ENV{PWD} . '/t/cache/',
-    )
-);
+my $api = WebService::Pokemon->new;
 
 $got = $api->resource('berry', 1);
 $expect = 'WebService::Pokemon::NamedAPIResource';

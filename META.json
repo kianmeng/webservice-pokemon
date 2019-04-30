@@ -48,14 +48,10 @@
       },
       "runtime" : {
          "requires" : {
-            "CHI" : "0",
-            "Data::Serializer" : "0",
-            "Digest::MD5" : "0",
             "JSON" : "0",
             "Moo" : "0",
             "REST::Client" : "0",
             "Role::REST::Client" : "0",
-            "Sereal" : "0",
             "Types::Standard" : "0",
             "URI::Fast" : "0",
             "namespace::clean" : "0",
@@ -91,6 +87,7 @@
    },
    "version" : "0.09",
    "x_contributors" : [
+      "Kian-Meng, Ang <kianmeng@cpan.org>",
       "Kian Meng Ang <kianmeng@users.noreply.github.com>",
       "Mohammad S Anwar <mohammad.anwar@yahoo.com>"
    ],

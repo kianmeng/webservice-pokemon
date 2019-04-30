@@ -24,15 +24,13 @@ is_deeply($got, $expect, 'expect empty response');
 $got = $api->_request('berry');
 is($got->{count}, 64, 'expect paginated list found');
 is(scalar @{$got->{results}}, 20, 'expect default limit = 20 match');
-is($got->{next}, 'https://pokeapi.co/api/v2/berry/?limit=20&offset=20', 'expect default offset = 20 match');
+is($got->{next}, 'https://pokeapi.co/api/v2/berry?offset=20&limit=20', 'expect default offset = 20 match');
 
+use Data::Dumper;
 $got = $api->_request('berry', 'cheri');
 is($got->{name}, 'cheri', 'expect berry found');
 
 $got = $api->_request('berry', 'cherri');
-is($got->{name}, undef, 'expect berry not found');
-
-$expect = { 'detail' => 'Not found.' };
-is_deeply($got, $expect, 'expect detail not found');
+is($got, 'Not Found', 'expect berry not found');
 
 done_testing;
