@@ -1,8 +1,9 @@
 package WebService::Pokemon;
 
-use utf8;
+use 5.008_005;
 use strictures 2;
 use namespace::clean;
+use utf8;
 
 use Moo;
 use Types::Standard qw(Bool Str);
