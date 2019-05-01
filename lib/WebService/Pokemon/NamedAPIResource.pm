@@ -7,7 +7,7 @@ use namespace::clean;
 use Moo;
 use Types::Standard qw(HashRef InstanceOf);
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 has api => (
     isa => InstanceOf['WebService::Pokemon'],

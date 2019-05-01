@@ -8,7 +8,7 @@ use Moo;
 use Types::Standard qw(Any ArrayRef HashRef InstanceOf Int Str);
 use Test::More;
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 has api => (
     isa => InstanceOf['WebService::Pokemon'],
