@@ -6,6 +6,13 @@ use Test::More;
 
 use WebService::Pokemon;
 
+BEGIN {
+    unless ($ENV{SWAPI_LIVE}) {
+        plan skip_all => '$ENV{SWAPI_LIVE} not set, skipping live tests'
+    }
+}
+
+
 my ($got, $expect) = ('', '');
 
 my $api = WebService::Pokemon->new;
