@@ -55,7 +55,7 @@
             "Types::Standard" : "0",
             "URI::Fast" : "0",
             "namespace::clean" : "0",
-            "strictures" : "0",
+            "strictures" : "2",
             "utf8" : "0"
          }
       },
